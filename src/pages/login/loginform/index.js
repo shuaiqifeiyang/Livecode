@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './loginformstyle.css'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
 
-class NormalLoginForm extends React.Component {
+class NormalLoginForm extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
@@ -47,11 +46,11 @@ class NormalLoginForm extends React.Component {
             })(
               <Checkbox>Remember me</Checkbox>
             )}
-            <a className="login-form-forgot" href="">Forgot password</a>
+            <a className="login-form-forgot" href="http://www.github.com">Forgot password</a>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            Or <a href="http://www.github.com">register now!</a>
           </FormItem>
         </Form>
       )
@@ -74,8 +73,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return{
     handleLogin(account, password){
-      axios.get('http://localhost:8080/login?username=' + account + "&password=" + password).
-      then((res)=>{
+      axios.get('http://localhost:8080/login?username=' + account + "&password=" + password).then((res)=>{
         const data=res.data;
         console.log(data);
         if(data.login){
@@ -87,7 +85,7 @@ const mapDispatch = (dispatch) => {
           };
           dispatch(action);
         }else{
-          console.log("info wrong");
+          alert("username or password is wrong");
         }
       }).catch(() => {
         console.log("error");

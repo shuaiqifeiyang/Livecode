@@ -45,6 +45,8 @@ export const UserInfoItem = styled.div`
 	color: #969696;
 `
 
-export const OnlineUserList = styled.ul`
+export const QuestionTitleList = styled.div`
+	cursor: pointer;
+	color: black;
 	
 `

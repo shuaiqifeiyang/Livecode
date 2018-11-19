@@ -4,10 +4,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import { GlobalStyle } from './style'
 import { GlobalStyleIcon } from './statics/iconfont/iconfont.js'
-import Header from './common/header/'
+
 import Studentpage from './pages/student'
 import Loginpage from './pages/login'
 import Teacherpage from './pages/teacher'
+import Coverpage from './pages/cover'
 
 import Debugpage from './pages/debug'
 
@@ -25,18 +26,18 @@ class App extends Component {
         <div>
           <GlobalStyle/>
           <GlobalStyleIcon/>
-          <Header />
           
           <BrowserRouter>
             <div>
-              
-              <Route path='/' exact component={ Loginpage }/> 
+              <Route path='/' exact component={ Coverpage } /> 
 
-              <Route path='/student'  component={ Studentpage }/>  
-              
-              <Route path='/teacher'  component={ Teacherpage }/> 
+              <Route path='/login' exact component={ Loginpage }/> 
 
-              <Route path='/debug' component={Debugpage}/> 
+              <Route path='/student' exact component={ Studentpage }/>  
+              
+              <Route path='/teacher' exact component={ Teacherpage }/> 
+
+              <Route path='/debug' exact component={Debugpage}/> 
             </div>  
           </BrowserRouter>
         

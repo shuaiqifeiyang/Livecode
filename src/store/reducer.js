@@ -1,10 +1,13 @@
 const defaultState = {
-	username: "3160",
+	username: "unlogin",
 	password: "",
-	language: "html",
+	language: "c_cpp",
 	login: false,
 	identity: "traveller",
-	question: "this is a difficult question"
+	previewtitle: "",
+	previewcontent: "",
+	problemlist: [],
+	verifyproblem: false
 };
 
 export default (state = defaultState, action) => {
@@ -48,8 +51,35 @@ export default (state = defaultState, action) => {
 		newState.password = action.password;
 		return newState;
 	}
-
-
+	if(action.type === 'received_problemlist'){
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.problemlist = action.value;
+		return newState;
+	}
+	if(action.type === 'received_previewproblem'){
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.previewtitle = action.title;
+		newState.previewcontent = action.content;
+		return newState;
+	}
+	if(action.type === 'verify_problem'){
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.verifyproblem = true;
+		return newState;
+	}
+	if(action.type === 'logout'){
+		const newState = JSON.parse(JSON.stringify(state));
+		newState.username = "unlogin";
+		newState.password = "";
+		newState.language = "c_cpp";
+		newState.login = false;
+		newState.identity = "traveller";
+		newState.previewtitle = "";
+		newState.previewcontent = "";
+		newState.problemlist = [];
+		newState.verifyproblem = false;
+		return newState;
+	}
 
 	return state;
 }

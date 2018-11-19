@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-
+import coverPicOptical from '../../statics/cover2.png'
 export const LoginWhole = styled.div`
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    top: 46px;
-    background: #f9f9f9;
+    top: 0;
+    background: url(${coverPicOptical});
+    background-size: cover;
+
 `;
 
 export const LoginWrapper = styled.div`

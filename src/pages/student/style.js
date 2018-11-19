@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 
-export const WholePage = styled.div`
+export const StudentWhole = styled.div`
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,0) 60%,#fff),linear-gradient(70deg,#dbedff 32%,#ebfff0);
+`;
+
+export const MainPage = styled.div`
 	
-	width: 1120px;
-	height: 1200px;
+	width: 1280px;
 	margin: 0 auto;
 
 `
