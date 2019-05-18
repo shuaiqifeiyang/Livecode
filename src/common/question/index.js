@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect as connectStore} from 'react-redux';
 import 'antd/dist/antd.css';  
-import { Card } from 'antd';
 import { QuestionCard } from './style'
-
+import './style.css';
 const ReactMarkdown = require('react-markdown')
 
 
@@ -13,7 +12,7 @@ class Questionwrapper extends Component{
 	componentWillMount(){
     const Stomp = require('stompjs')
     var SockJS = require('sockjs-client')
-    SockJS = new SockJS('http://localhost:8080/livecode')
+    SockJS = new SockJS('http://47.99.212.81:80/livecode')
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, this.onConnected, this.onError);
 	}
@@ -24,6 +23,7 @@ class Questionwrapper extends Component{
   }
 
   onProblemReceived=(payload)=>{
+  	console.log("**********************************************************************************");
   	var message = JSON.parse(payload.body);
   	this.props.handlePreview(message);
   	this.props.verifyProblem();
@@ -31,14 +31,10 @@ class Questionwrapper extends Component{
 	render(){
 		return (
 			<QuestionCard>
-				<Card
-				  title={this.props.problemverify ? this.props.title : (this.props.identity==="teacher" ? "please select question" : "please wait teacher select")}
-				  //extra={<a href="#">More</a>}
-				  style={{ width: 600, bordered: false}}
-				>
-
-				<ReactMarkdown source={this.props.problemverify?this.props.content:""} />		   
-				</Card>
+				<div className= "problemtitle"> 
+					{this.props.problemverify ? this.props.title : (this.props.identity==="teacher" ? "please select question" : "please wait teacher select")} 
+				</div>
+				<ReactMarkdown source={this.props.problemverify?this.props.content:""} />	   
 			</QuestionCard>
 		)
 	}

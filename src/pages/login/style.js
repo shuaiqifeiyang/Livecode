@@ -24,7 +24,7 @@ export const LoginBox = styled.div`
     height: 380px;
     margin: 80px auto;
     background: #fff;
-    box-shadow: 0 0 8px rgba(0,0,0,.1);
+    box-shadow: 0 0 8px rgba(0,0,0,.1);·    
 `;
 export const TitleWrapper = styled.div`
  	text-align:center;

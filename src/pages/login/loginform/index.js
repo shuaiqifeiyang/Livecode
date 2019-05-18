@@ -73,9 +73,10 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return{
     handleLogin(account, password){
-      axios.get('http://localhost:8080/login?username=' + account + "&password=" + password).then((res)=>{
+      axios.get('http://47.99.212.81:80/api/login?username=' + account + "&password=" + password).then((res)=>{
         const data=res.data;
-        console.log(data);
+        //console.log("here!!!");
+        //console.log(data);
         if(data.login){
           const action = {
             type: 'login_success',

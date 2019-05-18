@@ -10,6 +10,7 @@ const defaultState = {
 	verifyproblem: false
 };
 
+//reducer可以接收state，但是不能修改state
 export default (state = defaultState, action) => {
 	if(action.type === 'change_language'){
 		const newState = JSON.parse(JSON.stringify(state));

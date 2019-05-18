@@ -1,0 +1,68 @@
+.messagelist{
+	width: 335px;
+	list-style-type: none;
+	
+	padding-left: 10px;
+
+	
+	border-radius:5px;
+}
+.messagelist li{
+	
+}
+.message{
+	border: 1px solid #d3d3d3;
+	border-radius:5px;
+	height: 30px;
+	width: 305px;
+}
+
+.message:focus {
+    outline: none;
+    /*border: 1px solid #f60;*/
+    box-shadow: 0 0 8px #33bbff;
+    border: 1px solid #33bbff;
+}
+
+.send{
+	width: 50px;
+	height: 30px;
+	border-radius:5px;
+	background: #00aaff;
+	color: white;
+	border: none;
+}
+
+.send:focus{
+    outline: none;
+    /*border: 1px solid #f60;*/
+    box-shadow: 0 0 8px #33bbff;
+}
+
+.chatbox{
+	overflow: auto;
+	height: 205px;
+	width: 355px;
+	border: 1px solid #d3d3d3;
+	margin-top:10px;
+	margin-bottom: 3px;
+	background: white;
+}
+.messageinfo{
+	width: 355px;
+	box-sizing: contain;
+}
+
+.messagetime{
+	color: blue;
+	margin-right: 5px;
+	float:left;
+}
+
+.messagename{
+	margin-right: 5px;
+	float:left;
+}
+.messagecontent{
+
+}

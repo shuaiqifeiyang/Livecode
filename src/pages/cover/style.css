@@ -1,0 +1,56 @@
+.mian {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 38%;
+	top: 25%;
+	background: url(../../statics/mian.png);
+	background-size: contain;
+}
+.shi {
+	position: absolute;
+	width: 200px;
+	height: 180px;
+	left: 48%;
+	top: 25%;
+	background: url(../../statics/shi.png);
+	background-size: contain;
+}
+.bian {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 18%;
+	top: 25%;
+	background: url(../../statics/bian.png);
+	background-size: contain;
+}
+.cheng {
+	position: absolute;
+	width: 200px;
+	height: 180px;
+	left: 28%;
+	top: 25%;
+	background: url(../../statics/cheng.png);
+	background-size: contain;
+}
+.xi {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 58%;
+	top: 25%;
+	background: url(../../statics/xi.png);
+	background-size: contain;
+}
+.tong {
+	position: absolute;
+	width: 200px;
+	height: 180px;
+	left: 68%;
+	top: 25%;
+	background: url(../../statics/tong.png);
+	background-size: contain;
+}
+
+

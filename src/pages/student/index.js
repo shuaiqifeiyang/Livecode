@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Questionwrapper from '../../common/question';
 import Header from '../../common/header';
 import Codeeditwrapper from '../../common/code';
+import Chatwrapper from '../../common/chat';
+import Videowrapper from '../../common/video';
 
 import { StudentWhole, MainPage } from './style';
 class Studentpage extends Component{
@@ -14,14 +16,26 @@ class Studentpage extends Component{
 			<div>
 			
 			<StudentWhole>
-			<Header/>
-				<MainPage>
-			    <Row>
-			      <Col span={12}><Questionwrapper/></Col>
-			      <Col span={12}><Codeeditwrapper/></Col>
-			    </Row>
-			  </MainPage>
-		  </StudentWhole>
+				<Header/>
+					<MainPage>
+						<Row>
+							<Col span={12}>
+								<Questionwrapper/>
+							</Col>
+							<Col span={12}>
+								<Codeeditwrapper/> 
+								<Row>
+									<Col span={14}>
+										<Chatwrapper/> 
+									</Col>
+									<Col span={10}>
+										<Videowrapper/>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+					</MainPage>
+				</StudentWhole>
 			</div>
 		)
 	}

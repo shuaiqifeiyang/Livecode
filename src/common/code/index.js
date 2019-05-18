@@ -38,21 +38,21 @@ class Codeeditwrapper extends Component{
 	}
 
 	componentWillMount(){
-      const Stomp = require('stompjs')
-      var SockJS = require('sockjs-client')
-      SockJS = new SockJS('http://localhost:8080/livecode')
-      stompClient = Stomp.over(SockJS);
-      stompClient.connect({}, this.onConnected, this.onError);
+		const Stomp = require('stompjs')
+		var SockJS = require('sockjs-client')
+		SockJS = new SockJS('http://47.99.212.81:80/livecode')
+		stompClient = Stomp.over(SockJS)
+		stompClient.connect({}, this.onConnected, this.onError);
 	}
 
-  onConnected = () => {
-  	if(this.props.identity==='teacher'){
-  		stompClient.subscribe('/teacher/code', this.onMessageReceived);
-  		stompClient.subscribe('/teacher/cursorposition', this.onCursorPositionReceived);
-  		stompClient.subscribe('/teacher/language', this.onLanguageReceived);
-  		stompClient.subscribe('/teacher/selection', this.onSelectionReceived);
-  	}
-  }
+	onConnected = () => {
+		if(this.props.identity==='teacher'){
+			stompClient.subscribe('/teacher/code', this.onMessageReceived);
+			stompClient.subscribe('/teacher/cursorposition', this.onCursorPositionReceived);
+			stompClient.subscribe('/teacher/language', this.onLanguageReceived);
+			stompClient.subscribe('/teacher/selection', this.onSelectionReceived);
+		}
+	}
 
   sendCode = (e)=>{
 		this.setState(() => ({
@@ -110,7 +110,7 @@ class Codeeditwrapper extends Component{
 		const range = this.ace.editor.selection.getRange();
 		range.setStart(message.startrow, message.startcolumn);
 		range.setEnd(message.endrow, message.endcolumn);
-		console.log(message.isback);
+		//console.log(message.isback);
 		this.ace.editor.selection.setSelectionRange(range, message.isback);
 	}
 
@@ -126,12 +126,13 @@ class Codeeditwrapper extends Component{
 			  	onChange={this.handleLanguageChange.bind(this)} 
 			  >
 		      <Option value="c_cpp">c_cpp</Option>
-	  	    <Option value="java">java</Option>
+		      <Option value="java">java</Option>
 	    	  <Option value="python">python</Option>
 		      <Option value="html">html</Option>
 		      <Option value="javascript">javascript</Option>
 		      <Option value="php">php</Option>
 		    </Select>
+		    <Button type='primary' style={{width: 80, left: 282}} onClick={this.test.bind(this)}> 提交 </Button>
 		  </SelectCode>
 
 		  <CodeEditor>
@@ -139,7 +140,7 @@ class Codeeditwrapper extends Component{
 					ref={c => { this.ace = c; }}
 				  mode= {this.state.language}
 				  theme="chrome"
-				  height="450px"
+				  height="240px"
 				  width="600px"
 				  value={this.state.codecontent}
 				  onChange={this.sendCode}
@@ -147,9 +148,12 @@ class Codeeditwrapper extends Component{
 				  focus={true}
 				  //onSelectionChange={this.sendSelection}
 				  showPrintMargin={false}
+				  //enableBasicAutocompletion={true}
+					//enableLiveAutocompletion={true}
+
 				/>
 			</CodeEditor>
-			<Button type='primary' style={{width: 80, top: 10, left: 522}} onClick={this.test.bind(this)}> 提交 </Button>
+			
 
 			</div>
 		)

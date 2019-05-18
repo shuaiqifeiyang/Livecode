@@ -43,7 +43,7 @@ class Debugpage extends Component{
 		var SockJS = require('sockjs-client')
 		const Stomp = require('stompjs')
 	    
-	    SockJS = new SockJS('http://localhost:8080/gs-guide-websocket')
+	    SockJS = new SockJS('http://47.99.212.81:80/gs-guide-websocket')
 	    stompClient = Stomp.over(SockJS);
 	    stompClient.connect({}, this.onConnected, this.onError);*/
 	}

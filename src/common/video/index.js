@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import './style.css';
 
 class Videowrapper extends Component{
 
 	render(){
 		return (
-			<div> video </div>
+			<div className='video'> video </div>
 		)
 	}
 }

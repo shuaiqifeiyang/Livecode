@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Drawer, Button, Menu, Dropdown } from 'antd';
+import { Button, Menu, Dropdown } from 'antd';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { 
@@ -17,14 +17,13 @@ class Header extends Component {
 		super(props);
 		this.state = {
 			onLineUser: "unlogin",
-			chatVisible: false
 		}
 	}
 
 	componentWillMount(){
     const Stomp = require('stompjs')
     var SockJS = require('sockjs-client')
-    SockJS = new SockJS('http://localhost:8080/livecode')
+    SockJS = new SockJS('http://47.99.212.81:80/livecode')
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, this.onConnected, this.onError);
 	}
@@ -46,7 +45,7 @@ class Header extends Component {
 	}
 
 	logout(){
-		axios.get('http://localhost:8080/logout?username='+this.props.username).then((res)=>{});
+		axios.get('http://47.99.212.81:80/logout?username='+this.props.username).then((res)=>{});
 		this.setState(()=>({
 			onLineUser: "unlogin",
 			chatVisible: false,
@@ -57,7 +56,7 @@ class Header extends Component {
 		const menu = (
 		<Menu>
 		    <Menu.Item onClick={this.logout.bind(this)}>
-		        <Link to='/'>退出</Link> 
+		        <Link to='/'>exit</Link> 
 		    </Menu.Item>
 		    
 		  </Menu>
@@ -66,29 +65,13 @@ class Header extends Component {
 			<HeaderWrapper> 
 				<Logo /> 
 				<UserInfo>
-					<UserInfoItem className='Online'> 
-						<Button onClick={this.showDrawer}>
-		          Chat
-		        </Button>
-		      </UserInfoItem>
 		      <UserInfoItem className='Now'> 
 		        <Dropdown overlay={menu} placement="bottomCenter">
       				<Button>{this.props.username}</Button>
     				</Dropdown>
 		      </UserInfoItem>
 	       </UserInfo>
-        <Drawer
-          title={this.state.onLineUser}
-          placement="right"
-          closable={false}
-          width={520}
-          onClose={this.onClose}
-          visible={this.state.chatVisible}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          
-        </Drawer>
+
 				{/*<UserInfo>
 					<UserInfoItem className='Online'> 
 						<i className='iconfont'> &#xe616; </i>
@@ -107,7 +90,7 @@ class Header extends Component {
 
 	componentDidMount(){
 		if(this.props.login){
-			axios.get('http://localhost:8080/onlineuser').then((res)=>{
+			axios.get('http://47.99.212.81:80/onlineuser').then((res)=>{
 				this.setState({
 	      	onLineUser: res.data,
 	    });
@@ -118,20 +101,6 @@ class Header extends Component {
 			})
 		}
 	}
-
-	showDrawer = () => {
-    this.setState({
-      chatVisible: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      chatVisible: false,
-    });
-  };
-
-
 
 }
 

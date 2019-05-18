@@ -30,7 +30,7 @@ class TeacherHeader extends Component {
 	componentWillMount(){
     const Stomp = require('stompjs')
     var SockJS = require('sockjs-client')
-    SockJS = new SockJS('http://localhost:8080/livecode')
+    SockJS = new SockJS('http://47.99.212.81:80/livecode')
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, this.onConnected, this.onError);
 	}
@@ -52,10 +52,9 @@ class TeacherHeader extends Component {
 	}
 
 	logout(){
-		axios.get('http://localhost:8080/logout?username='+this.props.username).then((res)=>{});
+		axios.get('http://47.99.212.81:80/api/logout?username='+this.props.username).then((res)=>{});
 		this.setState(()=>({
 			onLineUser: "unlogin",
-			chatVisible: false,
 			selectVisible: false,
 			childrenDrawer: false
 		}));
@@ -84,12 +83,6 @@ class TeacherHeader extends Component {
 		          SelectQuestion
 		        </Button>
 		      </UserInfoItem>
-
-					<UserInfoItem className='Online'> 
-						<Button onClick={this.showChatDrawer}>
-		          Chat
-		        </Button>
-		      </UserInfoItem>
 		      
 		      <UserInfoItem className='Now'> 
 		        <Dropdown overlay={menu} placement="bottomCenter">
@@ -98,19 +91,6 @@ class TeacherHeader extends Component {
 		      </UserInfoItem>
 
 	       </UserInfo>
-        
-        {/*the chat draw*/}
-        <Drawer
-          title={this.state.onLineUser}
-          placement="right"
-          closable={false}
-          onClose={this.onCloseChat}
-          width={520}
-          visible={this.state.chatVisible}
-        >
-          <p>Some chats...</p>
-          <p>Some chats...</p>
-        </Drawer>
 
       	{/*the select problem draw*/}
       	<Drawer
@@ -176,7 +156,7 @@ class TeacherHeader extends Component {
 
 	componentDidMount(){
 		if(this.props.login){
-			axios.get('http://localhost:8080/onlineuser').then((res)=>{
+			axios.get('http://47.99.212.81:80/api/onlineuser').then((res)=>{
 				this.setState({
 	      	onLineUser: res.data,
 	    });
@@ -201,18 +181,6 @@ class TeacherHeader extends Component {
     });
 	}
 
-	showChatDrawer = () => {
-    this.setState({
-      chatVisible: true,
-    });
-  }
-
-  onCloseChat = () => {
-    this.setState({
-      chatVisible: false,
-    });
-  }
-
   showSelectDrawer = () => {
     
   	this.props.handleProblemList();
@@ -228,7 +196,7 @@ class TeacherHeader extends Component {
   }
 
   verify = () => {
-  	axios.get('http://localhost:8080/verifyproblem').then((res)=>{});
+  	axios.get('http://47.99.212.81:80/api/verifyproblem').then((res)=>{});
   	this.setState({
   		childrenDrawer: false,
   		selectVisible: false,
@@ -252,7 +220,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleProblemList(){
-			axios.get('http://localhost:8080/problemlist').then((res)=>{
+			axios.get('http://47.99.212.81:80/api/problemlist').then((res)=>{
 				const data=res.data;
 				const action = {
 					type: 'received_problemlist',
@@ -263,7 +231,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		handlePreview(index){
 			index=index+1;
-			axios.get('http://localhost:8080/previewproblem?index='+index).then((res)=>{
+			axios.get('http://47.99.212.81:80/api/previewproblem?index='+index).then((res)=>{
 				const data=res.data;
 				console.log(data);
 				const action = {

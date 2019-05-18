@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const SelectCode = styled.div`
-	overflow: hidden;
 	margin-bottom: 5px;
 	width: 560px;
 	margin-top:15px;
