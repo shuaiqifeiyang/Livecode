@@ -13,7 +13,7 @@ import 'brace/theme/chrome';
 import 'antd/dist/antd.css'; 
 // Render editor
 
-import  {Select, Button}  from 'antd';
+import  {Select, Button, Modal}  from 'antd';
 import {
 	SelectCode,
 	CodeEditor
@@ -33,7 +33,8 @@ class Codeeditwrapper extends Component{
 			cursorrow: 0,
 			cursorcolumn: 0,
 			isfocus: false,
-			language: "c_cpp"
+			language: "c_cpp",
+			visible: false
 		}
 	}
 
@@ -51,8 +52,37 @@ class Codeeditwrapper extends Component{
 			stompClient.subscribe('/teacher/cursorposition', this.onCursorPositionReceived);
 			stompClient.subscribe('/teacher/language', this.onLanguageReceived);
 			stompClient.subscribe('/teacher/selection', this.onSelectionReceived);
+			stompClient.subscribe('/teacher/judge', this.onJudgeReceived);
 		}
 	}
+
+	showModal = () => {
+    this.setState({
+      visible: true,
+    });
+    if(this.props.identity==='student'){
+				stompClient.send("/app/judge",
+	      {},
+	      JSON.stringify({ 'codeContext': this.state.codecontent })
+    	);
+    }
+
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
 
   sendCode = (e)=>{
 		this.setState(() => ({
@@ -70,6 +100,14 @@ class Codeeditwrapper extends Component{
     console.log("error");
   }
 
+  onJudgeReceived = (payload) => {
+  	if(this.props.identity==='teacher'){
+  		this.setState(() => ({
+				visible: true
+			}))
+  	}
+  	
+  }
   onLanguageReceived = (payload) => {
   	//this.props.handleChange(payload);
   	var message = JSON.parse(payload.body);
@@ -132,7 +170,15 @@ class Codeeditwrapper extends Component{
 		      <Option value="javascript">javascript</Option>
 		      <Option value="php">php</Option>
 		    </Select>
-		    <Button type='primary' style={{width: 80, left: 282}} onClick={this.test.bind(this)}> 提交 </Button>
+		    <Button type='primary' style={{width: 80, left: 282}} onClick={this.showModal}> 提交 </Button>
+		    <Modal
+          title="运行结果"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>答案正确</p>
+        </Modal>
 		  </SelectCode>
 
 		  <CodeEditor>

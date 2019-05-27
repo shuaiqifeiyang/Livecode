@@ -25,12 +25,13 @@ class Studentpage extends Component{
 							<Col span={12}>
 								<Codeeditwrapper/> 
 								<Row>
-									<Col span={14}>
+									{/*<Col span={14}>
 										<Chatwrapper/> 
-									</Col>
-									<Col span={10}>
+									</Col>*/}
+									<Chatwrapper/> 
+									{/*<Col span={10}>
 										<Videowrapper/>
-									</Col>
+									</Col>*/}
 								</Row>
 							</Col>
 						</Row>

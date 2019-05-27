@@ -1,5 +1,5 @@
 .messagelist{
-	width: 335px;
+	width: 605px;
 	list-style-type: none;
 	
 	padding-left: 10px;
@@ -14,7 +14,7 @@
 	border: 1px solid #d3d3d3;
 	border-radius:5px;
 	height: 30px;
-	width: 305px;
+	width: 555px;
 }
 
 .message:focus {
@@ -42,7 +42,7 @@
 .chatbox{
 	overflow: auto;
 	height: 205px;
-	width: 355px;
+	width: 600px;
 	border: 1px solid #d3d3d3;
 	margin-top:10px;
 	margin-bottom: 3px;
