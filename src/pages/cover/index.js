@@ -55,10 +55,13 @@ class Coverpage extends Component{
 					</Spring>
 
 					<ButtonRowPosition>
+                        <p style={{textAlign: "center"}}><a href="https://www.youtube.com/watch?v=Qg42OakU8HQ"> How to use the website? </a></p>
+                        
 						<ButtonColumnPosition>
 							<NavLink to='/login/'>
-							<Button type="primary" style={{width: 100}}> 进入 </Button>
+							<Button type="primary" style={{width: 100}}> Enter </Button>
 							</NavLink>
+                            
 						</ButtonColumnPosition>
 					</ButtonRowPosition>
 				</LoginWhole>
