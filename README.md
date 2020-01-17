@@ -8,6 +8,14 @@ This is repository is the frontend of a programming interview system.
 
 This programming interview system support following functions:
 
+* It can support one job hunter and two interviewers online.
+
+| username | password | identity   |
+| -------- | -------- | ---------- |
+| laolao1  | 123      | interview  |
+| laolao2  | 123      | interview  |
+| baobao1  | 123      | job hunter |
+
 * Interviewers can select questions, and the job hunters' screens will show the questions.
 
 ![](./GIF/question.gif)
