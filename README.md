@@ -1,4 +1,4 @@
-This is repository is the frontend of a programming interview system. 
+This repository is the frontend of a programming interview system. 
 
 * This video shows how to use the programming interview system: https://www.youtube.com/watch?v=Qg42OakU8HQ&t=1s
 * You can visit the system online at http://47.99.212.81
@@ -6,9 +6,9 @@ This is repository is the frontend of a programming interview system.
 
 
 
-This programming interview system support following functions:
+This programming interview system supports following functions:
 
-* It can support one job hunter and two interviewers online.
+* It supports one job hunter and two interviewers online.
 
 | username | password | identity   |
 | -------- | -------- | ---------- |
@@ -16,7 +16,7 @@ This programming interview system support following functions:
 | laolao2  | 123      | interview  |
 | baobao1  | 123      | job hunter |
 
-* Interviewers can select questions, and the job hunters' screens will show the questions.
+* Interviewers can select questions, and the job hunters' screens will show the question.
 
 ![](./GIF/question.gif)
 
